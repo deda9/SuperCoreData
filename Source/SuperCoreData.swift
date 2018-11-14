@@ -14,14 +14,14 @@ class SuperCoreData {
             NSInferMappingModelAutomaticallyOption: true]
     }
     
-    public static let shared: SuperCoreData = SuperCoreData()
+    public static let `default`: SuperCoreData = SuperCoreData()
     
     public var mainBundle: Bundle = Bundle.main
     public var modelName: String = Configurations.Model.name
     public var persistentStoreCoordinatorOptions: [String: Any]  = Configurations.persistentStoreCoordinatorOptions
     
-    private lazy var sqliteStoreURL: URL = self.createSqliteStoreURL()
-    private lazy var modelURL: URL = self.createModelURL()
+    private(set) lazy var sqliteStoreURL: URL = self.createSqliteStoreURL()
+    private(set) lazy var modelURL: URL = self.createModelURL()
     
     fileprivate lazy var _presistentStoreCoordinator: NSPersistentStoreCoordinator = self.createPresistentStoreCoordinator()
     fileprivate lazy var _managedObjectModel: NSManagedObjectModel = self.createManagedObjectModel()

@@ -3,7 +3,7 @@ import CoreData
 // MARK: - Save
 extension NSManagedObjectContext {
     
-    func save(_ complection: (() -> Void)? = nil) {
+    func save(_ complection: ((_ success: Bool) -> Void)? = nil) {
         if let complection = complection {
             self.doSave(complection)
         } else {
@@ -20,17 +20,23 @@ extension NSManagedObjectContext {
         }
     }
     
-    private func doSave(_ complection: (() -> Void)) {
+    private func doSave(_ complection: ((_ success: Bool) -> Void)) {
         performAndWait {
-            complection()
-            self.doSave()
+            do {
+                complection(true)
+                try self.save()
+                try self.parent?.save()
+            } catch {
+                complection(false)
+                fatalError("\(self): failed to save context \(error.localizedDescription)")
+            }
         }
     }
 }
 
 // MARK: - Save Async
 extension NSManagedObjectContext {
-    func saveAsync(_ complection: ((_ context: NSManagedObjectContext) -> Void)?) {
+    func saveAsync(_ complection: ((_ success: Bool) -> Void)?) {
         var context = self
         if self.concurrencyType != .privateQueueConcurrencyType {
             context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -42,22 +48,22 @@ extension NSManagedObjectContext {
                 self.doSaveAsync(complection)
             } else {
                 DispatchQueue.main.async {
-                    complection?(context)
+                    complection?(true)
                 }
             }
         }
     }
     
-    private func doSaveAsync(_ complection: ((_ context: NSManagedObjectContext) -> Void)?) {
+    private func doSaveAsync(_ complection: ((_ success: Bool) -> Void)?) {
         do {
             try self.save()
             if let parent = self.parent {
                 parent.doSaveAsync(complection)
             } else {
-                complection?(self)
+                complection?(true)
             }
         } catch {
-            complection?(self)
+            complection?(false)
             fatalError("\(self): failed to save context \(error.localizedDescription)")
         }
     }
