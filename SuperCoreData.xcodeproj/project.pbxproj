@@ -17,6 +17,7 @@
 		55780AF7219B163500108012 /* NSManagedObject+Super.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF6219B163500108012 /* NSManagedObject+Super.swift */; };
 		55780AF9219B18CA00108012 /* NSManagedObjectContext+SyncFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AF8219B18CA00108012 /* NSManagedObjectContext+SyncFetch.swift */; };
 		55780AFB219B1FE600108012 /* NSManagedObjectContext+AsyncFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55780AFA219B1FE600108012 /* NSManagedObjectContext+AsyncFetch.swift */; };
+		55DE69C1219C2EF8009A324F /* NSManagedObjectContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE69C0219C2EF8009A324F /* NSManagedObjectContext+Save.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		55780AF6219B163500108012 /* NSManagedObject+Super.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Super.swift"; sourceTree = "<group>"; };
 		55780AF8219B18CA00108012 /* NSManagedObjectContext+SyncFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+SyncFetch.swift"; sourceTree = "<group>"; };
 		55780AFA219B1FE600108012 /* NSManagedObjectContext+AsyncFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+AsyncFetch.swift"; sourceTree = "<group>"; };
+		55DE69C0219C2EF8009A324F /* NSManagedObjectContext+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Save.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		55780AF3219B04FF00108012 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				55DE69C0219C2EF8009A324F /* NSManagedObjectContext+Save.swift */,
 				55780AF4219B050800108012 /* SuperCoreData.swift */,
 				55780AF6219B163500108012 /* NSManagedObject+Super.swift */,
 				55780AF8219B18CA00108012 /* NSManagedObjectContext+SyncFetch.swift */,
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55780AF5219B050800108012 /* SuperCoreData.swift in Sources */,
+				55DE69C1219C2EF8009A324F /* NSManagedObjectContext+Save.swift in Sources */,
 				55780AF7219B163500108012 /* NSManagedObject+Super.swift in Sources */,
 				55780AD6219B04F200108012 /* ViewController.swift in Sources */,
 				55780AF9219B18CA00108012 /* NSManagedObjectContext+SyncFetch.swift in Sources */,

@@ -2,7 +2,7 @@ import CoreData
 
 class SuperCoreData {
     
-    struct Configurations {
+    private struct Configurations {
         struct Model {
             static let name = "MODEL"
             static let mom = "mom"
@@ -14,7 +14,7 @@ class SuperCoreData {
             NSInferMappingModelAutomaticallyOption: true]
     }
     
-    public static let `default`: SuperCoreData = SuperCoreData()
+    public static let shared: SuperCoreData = SuperCoreData()
     
     public var mainBundle: Bundle = Bundle.main
     public var modelName: String = Configurations.Model.name
@@ -31,6 +31,10 @@ class SuperCoreData {
 }
 
 fileprivate extension SuperCoreData {
+    
+    func save() {
+        self._defaultContext.save(nil)
+    }
     
     func createManagedObjectModel() -> NSManagedObjectModel {
         let model = NSManagedObjectModel(contentsOf: self.modelURL)
