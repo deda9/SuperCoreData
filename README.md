@@ -20,7 +20,7 @@ SuperCoreData.default.defaultContext.save { isSuccess in
 ```
 
 
-Then you can fetch your models by perdicate
+Then you can fetch your models by predicate
   ```Swift
 let perdicate = NSPredicate.init(format: "name == %@", "Deda")
 let person: Person? = SuperCoreData.default.defaultContext.fetchFirst(Person.self, predicate: perdicate)
